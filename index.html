@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fa">
+    <meta
+      name="description"
+      content="Aprende conceptos de propiedad intelectual con un juego de ahorcado para estudiantes de ingeniería en computación."
+    >
+    <title>IP: El desafío | Propiedad Intelectual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="IP: El desafío, inicio">
+          <span class="brand-mark" aria-hidden="true">IP</span>
+          <span class="brand-copy">
+            <span class="brand-name">IP: El desafío</span>
+            <span class="brand-subtitle">Propiedad Intelectual</span>
+          </span>
+        </a>
+        <div class="course-label">
+          <span class="course-label__eyebrow">Introducción a la Ingeniería en Computación</span>
+          <span>Facultad de Estudios Superiores Aragón · UNAM</span>
+        </div>
+        <div class="header-level" id="header-level" hidden>
+          <span class="header-level__label">NIVEL</span>
+          <strong id="header-level-value">01 / 10</strong>
+        </div>
+      </header>
+
+      <main>
+        <section class="welcome-screen screen" id="welcome-screen" aria-labelledby="welcome-title">
+          <div class="welcome-copy">
+            <span class="eyebrow">APRENDE JUGANDO</span>
+            <h1 id="welcome-title">Las ideas también<br>merecen <span>protección.</span></h1>
+            <p>
+              Descubre diez conceptos esenciales de propiedad intelectual y aprende
+              cómo se relacionan con el mundo de la computación.
+            </p>
+            <button class="button button--primary button--large" id="start-button" type="button">
+              <span id="start-button-label">Comenzar</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <p class="welcome-note">10 conceptos <span>·</span> Progreso guardado automáticamente</p>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <div class="art-orbit art-orbit--outer"></div>
+            <div class="art-orbit art-orbit--inner"></div>
+            <div class="art-core">
+              <span class="art-core__symbol">IP</span>
+              <span class="art-core__caption">IDEAS<br>CON VALOR</span>
+            </div>
+            <span class="art-node art-node--one">©</span>
+            <span class="art-node art-node--two">§</span>
+            <span class="art-node art-node--three">™</span>
+            <span class="art-node art-node--four">⌘</span>
+          </div>
+        </section>
+
+        <section class="game-screen screen" id="game-screen" aria-label="Juego de ahorcado" hidden>
+          <div class="game-column">
+            <div class="level-intro">
+              <div>
+                <span class="eyebrow" id="level-category">CONCEPTO 01</span>
+                <h1 id="level-title">Autor</h1>
+              </div>
+              <span class="difficulty-badge" id="difficulty-badge">Muy fácil</span>
+            </div>
+
+            <article class="clue-card">
+              <div class="clue-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 17.5v-.25c0-1.6 3.75-2.1 3.75-5.5a3.75 3.75 0 1 0-7.5 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  <circle cx="12" cy="20" r="1" fill="currentColor"/>
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div>
+                <span class="clue-card__label">PISTA</span>
+                <p id="clue-text"></p>
+              </div>
+            </article>
+
+            <div class="word-area" id="word-area" aria-label="Palabra por descubrir" aria-live="polite"></div>
+
+            <div class="keyboard-area">
+              <div class="keyboard-heading">
+                <span>ELIGE UNA LETRA</span>
+                <span class="keyboard-hint">También puedes usar tu teclado</span>
+              </div>
+              <div class="keyboard" id="keyboard" aria-label="Teclado virtual"></div>
+            </div>
+          </div>
+
+          <aside class="info-column" aria-label="Estado del juego">
+            <section class="status-card">
+              <div class="status-card__top">
+                <span class="eyebrow">INTENTOS</span>
+                <span class="attempt-count"><strong id="attempts-left">6</strong><span> / <span id="attempts-total">6</span></span></span>
+              </div>
+              <div class="hangman-wrap">
+                <svg class="hangman" viewBox="0 0 220 210" role="img" aria-labelledby="hangman-title hangman-desc">
+                  <title id="hangman-title">Dibujo del ahorcado</title>
+                  <desc id="hangman-desc">El dibujo se completa con cada letra incorrecta.</desc>
+                  <path class="gallows-line" d="M34 187h142M65 187V24h83v22" />
+                  <circle class="body-part" data-part="1" cx="148" cy="61" r="16" />
+                  <path class="body-part" data-part="2" d="M148 77v48" />
+                  <path class="body-part" data-part="3" d="m148 88-25 21" />
+                  <path class="body-part" data-part="4" d="m148 88 25 21" />
+                  <path class="body-part" data-part="5" d="m148 125-23 32" />
+                  <path class="body-part" data-part="6" d="m148 125 23 32" />
+                </svg>
+              </div>
+              <p class="attempt-message" id="attempt-message" aria-live="polite">Cada acierto te acerca a la respuesta.</p>
+            </section>
+
+            <section class="score-card">
+              <div class="score-row">
+                <div>
+                  <span class="eyebrow">PUNTUACIÓN</span>
+                  <strong class="score-value" id="score-value">0</strong>
+                </div>
+                <span class="score-unit">PTS</span>
+              </div>
+              <div class="progress-label">
+                <span>Progreso del curso</span>
+                <strong id="progress-value">0%</strong>
+              </div>
+              <div class="progress-track" role="progressbar" aria-label="Progreso de niveles" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="progress-bar">
+                <span id="progress-fill"></span>
+              </div>
+              <div class="level-dots" id="level-dots" aria-label="Niveles completados"></div>
+            </section>
+
+            <section class="tip-card">
+              <span class="tip-card__icon" aria-hidden="true">i</span>
+              <p><strong>Idea clave</strong><span id="level-tip"></span></p>
+            </section>
+          </aside>
+        </section>
+
+        <section class="result-screen screen" id="result-screen" aria-live="polite" hidden>
+          <div class="result-card">
+            <div class="result-symbol" id="result-symbol" aria-hidden="true"></div>
+            <span class="eyebrow" id="result-eyebrow"></span>
+            <h1 id="result-title"></h1>
+            <p class="result-answer" id="result-answer" hidden></p>
+            <p class="result-definition" id="result-definition"></p>
+            <div class="importance-note">
+              <span class="importance-note__label">EN INGENIERÍA EN COMPUTACIÓN</span>
+              <p id="result-importance"></p>
+            </div>
+            <p class="result-points" id="result-points"></p>
+            <div class="result-actions" id="result-actions"></div>
+          </div>
+        </section>
+
+        <section class="final-screen screen" id="final-screen" aria-labelledby="final-title" hidden>
+          <div class="final-card">
+            <span class="eyebrow">RECORRIDO COMPLETADO</span>
+            <div class="final-seal" aria-hidden="true">IP</div>
+            <h1 id="final-title">¡Desafío superado!</h1>
+            <p>Completaste los diez conceptos de propiedad intelectual. Estas ideas te acompañarán al crear, usar y compartir tecnología.</p>
+            <div class="final-score">
+              <span>PUNTUACIÓN FINAL</span>
+              <strong id="final-score-value">0</strong>
+              <span>puntos</span>
+            </div>
+            <button class="button button--primary" id="restart-button" type="button">Volver a jugar</button>
+          </div>
+        </section>
+
+        <p class="save-notice" id="save-notice" role="status" hidden></p>
+      </main>
+
+      <footer class="site-footer">
+        <span>Material didáctico · Introducción a la Ingeniería en Computación</span>
+        <button class="text-button" id="reset-progress-button" type="button" hidden>Reiniciar progreso</button>
+      </footer>
+    </div>
+  </body>
+</html>
